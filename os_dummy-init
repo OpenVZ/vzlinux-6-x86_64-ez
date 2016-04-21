@@ -1,0 +1,37 @@
+Summary: Dummy package to fix initscripts configs
+Name: vzdummy-init-fc13
+Group: Applications/System
+Vendor: SWsoft
+License: GPL
+Version: 1.0
+Release: 1
+Autoreq: 0
+BuildRoot: %_tmppath/%name-root
+BuildArch: noarch
+
+%description
+Dummy package to fix initscripts configs
+
+%triggerin -- initscripts
+mkdir -p /etc/init.removed > /dev/null 2>&1
+mv -f /etc/init/*tty*.conf /etc/init.removed
+mv -f /etc/init/serial.conf /etc/init.removed
+mv -f /etc/init/rcS-sulogin.conf /etc/init.removed
+mv -f /etc/init/*plymouth*.conf /etc/init.removed
+mv -f /etc/init/prefdm.conf /etc/init.removed
+mv -f /etc/init/control-alt-delete.conf /etc/init.removed
+mv -f /etc/init/rcS.conf /etc/init.removed
+mv -f /etc/init/rc.conf /etc/init.removed
+
+# Fix rc.conf and rcS.conf
+for i in rc.conf rcS.conf; do
+	cat /etc/init.removed/$i | \
+	sed "s,^console output,#console output,g" > /etc/init/$i
+done
+:
+
+%files
+
+%changelog
+* Fri Jul 02 2010 Konstantin Volckov <wolf@sw.ru> 1.0-1
+- created

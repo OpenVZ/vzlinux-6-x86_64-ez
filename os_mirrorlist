@@ -1,0 +1,4 @@
+$SW_SERVER/download/mirrors/centos-6
+$SW_SERVER/download/mirrors/updates-released-ce6
+http://repo.virtuozzo.com/vzlinux/mirrorlist/mirrors-6-os
+http://repo.virtuozzo.com/vzlinux/mirrorlist/mirrors-6-updates

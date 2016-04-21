@@ -1,0 +1,4 @@
+mysql-server
+mysql-devel
+mysql-bench
+perl-DBD-MySQL

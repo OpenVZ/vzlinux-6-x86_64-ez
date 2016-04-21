@@ -1,0 +1,67 @@
+#!/bin/bash
+
+mkdir -p etc/init
+
+echo "# upgrade - tell vzctl that start was successfull
+#
+# This task causes to tell vzctl that start was successfull
+
+description	\"tell vzctl that start was successfull\"
+
+start on startup
+
+task
+
+exec echo 2 > /.vzfifo
+" > etc/init/upgrade.conf
+
+
+# Hack for /sbin/service post-install glibc execution
+
+rm -f sbin/service
+
+ln -s /bin/true sbin/service
+
+rpm -e --nodeps --allmatches sendmail-doc >/dev/null 2>&1
+rpm -e --nodeps --allmatches samba-swat >/dev/null 2>&1
+rpm -e --nodeps --allmatches rhpl >/dev/null 2>&1
+rpm -e --nodeps --allmatches vzlinux-release >/dev/null 2>&1
+rpm -e --nodeps --allmatches perl-Net-IP >/dev/null 2>&1
+rpm -e --nodeps --allmatches openssl-perl >/dev/null 2>&1
+rpm -e --nodeps --allmatches device-mapper >/dev/null 2>&1
+rpm -e --nodeps --allmatches curl >/dev/null 2>&1
+rpm -e --nodeps --allmatches expect >/dev/null 2>&1
+rpm -e --nodeps --allmatches hesiod >/dev/null 2>&1
+rpm -e --nodeps --allmatches mysql >/dev/null 2>&1
+rpm -e --nodeps --allmatches --justdb nss >/dev/null 2>&1
+
+# Proftpd part
+rpm -e --nodeps --allmatches proftpd >/dev/null 2>&1
+
+# Java part
+rpm -e --nodeps --allmatches jakarta-commons-modeler >/dev/null 2>&1
+rpm -e --nodeps --allmatches mx >/dev/null 2>&1
+rpm -e --nodeps --allmatches java-1.4.2-gcj-compat >/dev/null 2>&1
+rpm -e --nodeps --allmatches java-1.4.2-gcj-compat-devel >/dev/null 2>&1
+
+# Devel part
+rpm -e --nodeps --allmatches gd-devel >/dev/null 2>&1
+rpm -e --nodeps --allmatches expect-devel >/dev/null 2>&1
+rpm -e --nodeps --allmatches slang-devel >/dev/null 2>&1
+rpm -e --nodeps --allmatches hesiod-devel >/dev/null 2>&1
+rpm -e --nodeps --allmatches sendmail-devel >/dev/null 2>&1
+rpm -e --nodeps --allmatches elfutils-libelf-devel >/dev/null 2>&1
+rpm -e --nodeps --allmatches elfutils-devel-static >/dev/null 2>&1
+rpm -e --nodeps --allmatches elfutils-libelf-devel-static >/dev/null 2>&1
+rpm -e --nodeps --allmatches newt-devel >/dev/null 2>&1
+
+# Php part
+rpm -e --nodeps --allmatches php-devel >/dev/null 2>&1
+rpm -e --nodeps --allmatches php-mbstring >/dev/null 2>&1
+rpm -e --nodeps --allmatches php-imap >/dev/null 2>&1
+rpm -e --nodeps --allmatches php-ncurses >/dev/null 2>&1
+rpm -e --nodeps --allmatches php-mbstring >/dev/null 2>&1
+rpm -e --nodeps --allmatches php-snmp >/dev/null 2>&1
+
+rpm -e --nodeps --allmatches perl-Archive-Tar >/dev/null 2>&1
+:
