@@ -4,7 +4,7 @@
 %define templatearch x86_64
 
 # Human-readable attributes
-%define fullname Centos %templatever
+%define fullname VzLinux %templatever
 %define fulltemplatearch (for AMD64/Intel EM64T)
 
 # template dirs
@@ -52,7 +52,7 @@ Name: %templatename-%templatever-%templatearch-ez
 Group: Virtuozzo/Templates
 License: GPL
 Version: 7.0.0
-Release: 1%{?dist}
+Release: 2%{?dist}
 BuildRoot: %_tmppath/%name-root
 BuildArch: noarch
 Requires: %package_manager_pkg
