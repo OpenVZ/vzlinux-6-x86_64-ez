@@ -52,7 +52,7 @@ Name: %templatename-%templatever-%templatearch-ez
 Group: Virtuozzo/Templates
 License: GPL
 Version: 7.0.0
-Release: 3%{?dist}
+Release: 4%{?dist}
 BuildRoot: %_tmppath/%name-root
 BuildArch: noarch
 Requires: %package_manager_pkg
@@ -147,6 +147,9 @@ done
 %files -f files.lst
 
 %changelog
+* Wed Sep 14 2016 Konstantin Volkov <wolf@virtuozzo.com> 7.0.0-4
+- Disable iptables service by default, see #PSBM-52142
+
 * Tue Apr 26 2016 Denis Silakov <dsilakov@virtuozzo.com> 7.0.0-3
 - Drop aux mirrors - all necessary packages are in vzlinux repos now
 
