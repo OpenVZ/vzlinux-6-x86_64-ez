@@ -47,9 +47,9 @@ done
 fi
 
 # turn services on
-list="network httpd sshd xinetd saslauthd sendmail rsyslog crond"
+list="network httpd iptables sshd xinetd saslauthd sendmail rsyslog crond"
 for i in $list; do
-	/sbin/chkconfig --level 3 $i on > /dev/null 2>&1	
+	/sbin/chkconfig --level 3 $i on > /dev/null 2>&1
 done
 
 # disable all cron jobs
